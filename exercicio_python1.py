@@ -1,10 +1,13 @@
 """
-Em um concurso de fantasias, os jurados precisam digitar os nomes dos 5 participantes e suas respectivas
-notas, variando de 0 até 10. Crie uma função que leia os nomes dos participantes e, ao final, apresente
-apenas o nome e a nota do vencedor.
-
-Fluxo de exceção: 
-O programa deve verificar se a nota da pessoa é maior ou igual a zero e menor ou igual a dez.
+Crie um programa contendo uma função que, dados um valor de renda mensal total, gastos
+totais com moradia, gastos totais com educação e gastos totais com transporte, faça um
+diagnóstico da saúde financeira do usuário, com base nos valores percentuais acima expostos,
+informando qual é o percentual da renda mensal total comprometido por cada custo. 
+Se o gasto estiver dentro do percentual recomendado, informe ainda que seus gastos estão
+dentro da margem recomendada. Caso contrário, informe: "Portanto, idealmente, o máximo de
+sua renda comprometida com {tipo} deveria ser de R$ {valor_max}".
+Onde tipo deve ser moradia, educação ou transportes e valor_max deve ser o valor equivalente
+ao percentual máximo de gasto com esse tipo de custo.
 """
 
 
