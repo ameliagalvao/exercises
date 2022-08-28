@@ -1,0 +1,50 @@
+/* Considere que para cada letra do alfabeto exista um número natural associado de maneira sequencial.
+Trabalhe apenas com letras minúsculas, não se preocupe com as maiúsculas agora. Nesta questão, você deve implementar
+uma função que recebe uma string com uma única palavra e, então, retorna um número inteiro calculado a partir dessa string.
+Teste com as seguintes palavras: "infnet", "abacaxi", "pneumoultramicroscopicosilicovulcaniconiótico", "e". O cálculo deve ser feito da seguinte forma:
+I. Para cada letra na palavra, você irá calcular um valor associado. Este valor será igual ao número que representa a letra vezes a posição da letra na palavra.
+II. O valor associado à palavra será igual à soma dos valores associados a cada uma de suas letras — é esse valor que deve ser retornado.
+Exemplo: café
+LETRA - (número inteiro associado) * (posição na palavra)
+ C - 3 * 1 = 3
+ A - 1 * 2 = 2
+ F - 6 * 3 = 18
+ E - 5 * 4 = 20
+ café = 3 + 2 + 18 + 20 = 43
+*/
+
+fun main(){
+    println("Digite uma palavra SEM acento gráfico, caso contenha: ")
+    var wordUser:String = readLine()!!
+    getValuesFromMap(getMapUserWord(wordUser))
+    println("O número correspondente à palavra ${wordUser} é: ${simulateHashMap(wordMap)}")
+    println()
+}
+
+val lettersNumbersMap:Map<String,Int> = mapOf("a" to 1,"b" to 2,"c" to 3,"d" to 4,"e" to 5,"f" to 6,"g" to 7,"h" to 8,"i" to 9,"j" to 10,"k" to 11,"l" to 12,"m" to 13,"n" to 14,"o" to 15,"p" to 16,"q" to 17,"r" to 18,"s" to 19,"t" to 20,"u" to 21,"v" to 22,"w" to 23,"x" to 24,"y" to 25,"z" to 26)
+val wordMap:MutableList<Pair<Char, Int>> = mutableListOf()
+val lettersValues:MutableList<Int?> = mutableListOf()
+val valuesToSum:MutableList<Int> = mutableListOf()
+
+fun getMapUserWord(word:String): MutableList<Pair<Char, Int>> {
+    for (letter in 0 until word.length){
+        wordMap.add(word[letter] to letter + 1)
+    }
+    return wordMap
+}
+
+fun getValuesFromMap(word: MutableList<Pair<Char, Int>>): MutableList<Int?> {
+    var letterToCheck: String = ""
+    for (i in 0 until word.size) {
+        letterToCheck = (word[i].first).toString()
+        lettersValues.add(lettersNumbersMap.get(letterToCheck))
+    }
+    return lettersValues
+}
+
+fun simulateHashMap(pair:MutableList<Pair<Char, Int>>): Int {
+    for (i in 0 until pair.size) {
+        valuesToSum.add(pair[i].second * lettersValues[i]!!)
+    }
+    return valuesToSum.sum()
+}
