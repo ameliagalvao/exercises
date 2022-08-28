@@ -1,0 +1,25 @@
+/* considere a listas a seguir, como listas de teste:
+triangulo = listOf(1, 2, 3, 4, 5, 4, 3, 2, 1, 0)
+fibonacci = listOf(1, 1, 2, 3, 5, 8, 13, 21, 34)
+vazio = listOf<Int>()
+
+Faça um programa que exibe o maior elemento de uma lista. Teste nas listas de teste.
+*/
+
+val triangulo: List<Int> = listOf(1, 2, 3, 4, 5, 4, 3, 2, 1, 0)
+val fibonacci: List<Int> = listOf(1, 1, 2, 3, 5, 8, 13, 21, 34)
+val vazio: List<Int> = listOf<Int>()
+
+fun main(){
+    showMaxValue(triangulo)
+    showMaxValue(fibonacci)
+    showMaxValue(vazio)
+}
+
+fun showMaxValue(list1: List<Int>){
+    if (list1.isEmpty()) {
+        println("A lista ${list1} está vazia")
+    } else {
+        println("O maior valor da lista ${list1} é: ${list1.maxOrNull()?:0}")
+    }
+}
