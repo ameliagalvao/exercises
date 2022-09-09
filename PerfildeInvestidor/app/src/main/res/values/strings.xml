@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Perfil de Investidor</string>
+    <string name="description">Esse questionário identificará o seu perfil como investidor para que investimentos mais alinhados a sua natureza lhe sejam recomendados.\n\nPara cada questão, escolha a alternativa que mais se aproxima dos seus objetivos e expectativas como investidor.\n\nPreencha seu nome no campo abaixo e clique em Iniciar.</string>
+    <string name="credits">Questionário elaborado pelo Grupo Paulista: https://www.bancopaulista.com.br/Arquivos/QuestionarioAPI.pdf</string>
+    <string name="question1">1. Por quanto tempo você pretende deixar seu dinheiro investido?</string>
+    <string name="question2">2. Qual o objetivo desse investimento?</string>
+    <string name="question3">3. Qual das alternativas melhor classifica sua formação e experiência com o mercado financeiro?</string>
+    <string name="question4">4. Considerando seus rendimentos regulares, qual a porcentagem você pretende reservar para aplicações financeiras?</string>
+    <string name="question5">5. Caso as suas aplicações sofressem uma queda superior a 30%, o que você faria?</string>
+    <string name="question6">6. Como está distribuído o seu patrimônio?</string>
+    <string name="question7">7. Em relação as aplicações e rendimentos, em qual dessas situações você se enquadra?</string>
+    <string name="question8">8. Qual sua faixa de renda mensal média?</string>
+    <string name="question9">9. Qual o valor aproximado do seu patrimônio?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

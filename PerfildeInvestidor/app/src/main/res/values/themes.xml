@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PerfilDeInvestidor" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#2F453A</item>
+        <item name="colorPrimaryVariant">#EA5E00</item>
+        <item name="colorOnPrimary">#303D5E</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#D5D4C0</item>
+        <item name="colorSecondaryVariant">#567564</item>
+        <item name="colorOnSecondary">#202220</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

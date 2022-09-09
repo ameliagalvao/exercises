@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.miigubymia.perfildeinvestidor.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.miigubymia.perfildeinvestidor.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.miigubymia.perfildeinvestidor.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" >
+        <action
+            android:id="@+id/action_thirdFragment_to_fourthFragment"
+            app:destination="@id/fourthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourthFragment"
+        android:name="com.miigubymia.perfildeinvestidor.FourthFragment"
+        android:label="fragment_fourth"
+        tools:layout="@layout/fragment_fourth" >
+        <action
+            android:id="@+id/action_fourthFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fifthFragment"
+        android:name="com.miigubymia.perfildeinvestidor.FifthFragment"
+        android:label="fragment_fifth"
+        tools:layout="@layout/fragment_fifth" >
+        <action
+            android:id="@+id/action_fifthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sixthFragment"
+        android:name="com.miigubymia.perfildeinvestidor.SixthFragment"
+        android:label="fragment_sixth"
+        tools:layout="@layout/fragment_sixth" >
+        <action
+            android:id="@+id/action_sixthFragment_to_seventhFragment"
+            app:destination="@id/seventhFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seventhFragment"
+        android:name="com.miigubymia.perfildeinvestidor.SeventhFragment"
+        android:label="fragment_seventh"
+        tools:layout="@layout/fragment_seventh" >
+        <action
+            android:id="@+id/action_seventhFragment_to_eighthFragment"
+            app:destination="@id/eighthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eighthFragment"
+        android:name="com.miigubymia.perfildeinvestidor.EighthFragment"
+        android:label="fragment_eighth"
+        tools:layout="@layout/fragment_eighth" >
+        <action
+            android:id="@+id/action_eighthFragment_to_ninethFragment"
+            app:destination="@id/ninethFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ninethFragment"
+        android:name="com.miigubymia.perfildeinvestidor.NinethFragment"
+        android:label="fragment_nineth"
+        tools:layout="@layout/fragment_nineth" >
+        <action
+            android:id="@+id/action_ninethFragment_to_resultsActivity"
+            app:destination="@id/resultsActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/resultsActivity"
+        android:name="com.miigubymia.perfildeinvestidor.ResultsActivity"
+        android:label="activity_results"
+        tools:layout="@layout/activity_results" />
+</navigation>

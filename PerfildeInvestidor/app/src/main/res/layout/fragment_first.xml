@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?colorPrimary">
+
+        <TextView
+            android:id="@+id/tvTitleQuestion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?colorSecondaryVariant"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvQuestion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="?colorSecondary"
+            android:textSize="22sp" />
+
+        <RadioGroup
+            android:id="@+id/radiogQuestion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <RadioButton
+                android:id="@+id/radioA1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="?colorSecondary"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioB1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="?colorSecondary"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioC1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="?colorSecondary"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioD1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="?colorSecondary"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioE1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?colorSecondary"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnNext1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="?colorPrimaryVariant"
+            android:text="Próxima"
+            android:textColor="?colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp" />
+    </LinearLayout>
+</FrameLayout>

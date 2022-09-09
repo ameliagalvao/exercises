@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultsActivity"
+    android:orientation="vertical"
+    android:background="?colorPrimary">
+
+    <TextView
+        android:id="@+id/tvTitleResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Resultado"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?colorSecondaryVariant"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvNameUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="?colorSecondary"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvResults"
+        android:layout_width="360dp"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?colorSecondary"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@drawable/bg_green"
+        android:backgroundTint="?colorPrimaryVariant"/>
+
+    <TextView
+        android:id="@+id/tvreason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="?colorSecondary"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+</LinearLayout>
