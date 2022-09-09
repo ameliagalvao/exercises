@@ -1,0 +1,104 @@
+/* Escreva uma classe que modele uma data. Represente dia, mês e ano como números. Escreva métodos para responder às seguintes perguntas:
+A data se encontra em ano bissexto?
+Quantos dias têm o mês da data?
+Quantos dias existem entre o dia da data e o primeiro dia do ano inclusive?
+*/
+
+fun main(){
+    println("Digite um dia: ")
+    val dayInput:Int = readLine()!!.toInt()
+    println("Digite um mês: ")
+    val monthInput:Int = readLine()!!.toInt()
+    println("Digite um ano no formato de 4 dígitos: ")
+    val yearInput:Int = readLine()!!.toInt()
+    println("Você digitou: ${dayInput}/${monthInput}/${yearInput}")
+    val userDate = Data(dayInput, monthInput, yearInput)
+    println("O ano digitado ${if (userDate.isLeapYear(yearInput)){
+        "é bissexto."
+    } else {
+        "não é bissexto."
+    }
+    }")
+    println("O mês digitado tem ${userDate.getHowManyDaysMonth(monthInput, yearInput)} dias.")
+    println("Já se passaram ${userDate.getHowManyDaysFromDayOne(dayInput, monthInput, yearInput)} dias contando do primeiro dia do ano.")
+}
+
+class Data (day:Int, month:Int, year:Int) {
+    val day:Int = day
+    val month:Int = month
+    val year:Int = year
+
+    var daysInMonth:Int = 0
+    var daysFromOne:Int = 0
+    var leapTest = false
+
+    fun isLeapYear(year: Int): Boolean {
+        leapTest = when{
+            year % 4 == 0 -> {
+                when {
+                    year % 100 == 0 -> year % 400 == 0
+                    else -> true
+                }
+            }
+            else -> false
+        }
+        return leapTest
+    }
+
+    fun getHowManyDaysMonth(month: Int, year: Int): Int {
+        daysInMonth = when(month){
+            1 -> 31
+            2 -> if (isLeapYear(year)) {
+                29
+            } else 28
+            3 -> 31
+            4 -> 30
+            5 -> 31
+            6 -> 30
+            7 -> 31
+            8 -> 31
+            9 -> 30
+            10 -> 31
+            11 -> 30
+            else -> 31
+        }
+        return daysInMonth
+    }
+
+    fun getHowManyDaysFromDayOne(day:Int, month:Int, year:Int): Int {
+        daysFromOne = when(month){
+            3 -> 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            4 -> 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            5 -> 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            6 -> 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            7 -> 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            8 -> 31 + 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            9 -> 31 + 31 + 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            10 -> 30 + 31 + 31 + 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            11 -> 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            12 -> 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 31 + if (isLeapYear(year)) {
+                29
+            } else 28
+            else -> 31
+        }
+        return daysFromOne + day
+    }
+}

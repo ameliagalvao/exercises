@@ -1,0 +1,42 @@
+// Faça uma função que calcule o fatorial de um número n.
+
+fun main(){
+    println("Digite um número para calcular seu fatorial: ")
+    var numberInput:Int = readLine()!!.toInt()
+    println(checkIfOneOrZero(numberInput))
+
+}
+
+fun checkIfOneOrZero(n:Int): Any {
+    var result: Any
+    if (n == 0) {
+        result = "O Fatorial de 0 é 1."
+    } else if (n == 1) {
+        result = "O Fatorial de 1 é 1"
+    } else if (n < 0){
+        result = "Número inválido"
+    } else {
+        result = "O Fatorial de ${n} é ${calcFactorial(createListFatorial(n))}"
+    }
+    return result
+}
+
+fun createListFatorial(userNumber: Int): MutableList<Int> {
+    var i: Int = userNumber
+    var listFactorial: MutableList<Int> = mutableListOf(i)
+    while (i >= 2) {
+        listFactorial.add(i - 1)
+        i--
+    }
+    return listFactorial
+}
+
+fun calcFactorial(list: MutableList<Int>): Int {
+    var i:Int = 1
+    var factResult:Int = list[0]
+    while (i <= list.size - 1){
+        factResult *= list[i]
+        i++
+    }
+    return factResult
+}

@@ -1,0 +1,51 @@
+/* considere a listas a seguir, como listas de teste:
+triangulo = listOf(1, 2, 3, 4, 5, 4, 3, 2, 1, 0)
+fibonacci = listOf(1, 1, 2, 3, 5, 8, 13, 21, 34)
+vazio = listOf<Int>()
+
+Faça uma função que receba uma lista de números inteiros e retorne uma nova lista, com a mesma quantidade de elementos, 
+de modo que as posições em que havia um número primo, sejam  preenchidas com o número 1 e as demais posições, com o 
+número 0. Teste nas listas de teste e em exemplos próprios.
+*/
+
+val triangulo: List<Int> = listOf(1, 2, 3, 4, 5, 4, 3, 2, 1, 0)
+val fibonacci: List<Int> = listOf(1, 1, 2, 3, 5, 8, 13, 21, 34)
+val vazio: List<Int> = listOf<Int>()
+
+fun main(){
+    checkIfEmpty(triangulo)
+    checkIfEmpty(fibonacci)
+    checkIfEmpty(vazio)
+}
+
+fun checkIfEmpty(list1: List<Int>){
+    if (list1.isEmpty()) {
+        println("A lista ${list1} está vazia")
+    } else {
+        println("A lista ${list1} gerou a nova lista: ${isPrime(list1)}")
+    }
+}
+
+fun isPrime(list: List<Int>):MutableList<Int>{
+    var newList:MutableList<Int> = mutableListOf()
+    var n:Int= 2
+    for (i in list.indices){
+        if (list[i] <= 1){
+            newList.add(0)
+        } else if (list[i] == 2) {
+            newList.add(1)
+        } else {
+            while (n < list[i]){
+                if (list[i] % n == 0){
+                    newList.add(0)
+                    break
+                } else if (n == (list[i] - 1)) {
+                    newList.add(1)
+                }
+                n++
+            }
+            n = 2
+        }
+    }
+    return newList
+}
