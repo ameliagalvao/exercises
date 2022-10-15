@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1027442557053",
+    "firebase_url": "https://learning-da13d-default-rtdb.firebaseio.com",
+    "project_id": "learning-da13d",
+    "storage_bucket": "learning-da13d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027442557053:android:0909a724a1698e770ab114",
+        "android_client_info": {
+          "package_name": "com.miigubymia.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027442557053-eqd223qgg2rq3v53enlosichg1bbc1ln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miigubymia.firebase",
+            "certificate_hash": "dbaa6b3773e9bda03c0e01419d523380985702ab"
+          }
+        },
+        {
+          "client_id": "1027442557053-lcs7n5tohq5rgs7fphg7gk8f77l1alr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP0CwNklTJKy1oVA8lGDmAoXGcCLSIhCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027442557053-lcs7n5tohq5rgs7fphg7gk8f77l1alr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
