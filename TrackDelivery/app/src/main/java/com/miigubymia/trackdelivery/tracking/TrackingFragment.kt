@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
-import android.location.LocationManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,8 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import com.google.android.gms.location.LocationServices
 import com.miigubymia.trackdelivery.R
 import java.io.File
 import java.io.FileOutputStream
@@ -42,11 +39,20 @@ class TrackingFragment : Fragment() {
         val textViewLocation = view.findViewById<TextView>(R.id.tvLocation)
 
         btnRegister.setOnClickListener {
-            val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
-            currentTime = simpleFormat.format(Date())
-            fileName = "$currentTime.crd"
-            context?.let { it1 -> write(it1, requireActivity(), fileName) }
-            Toast.makeText(context, "Hora: $currentTime", Toast.LENGTH_SHORT).show()
+            // Verifica se o serviço está rodando
+            if (isMyServiceRunning(LocationService::class.java, requireContext())){
+                // Pega a data
+                val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+                currentTime = simpleFormat.format(Date())
+                //Localização
+                val currentLocation = ""
+
+                // Salva o arquivo
+                fileName = "$currentTime.crd"
+                context?.let { it1 -> write(it1, requireActivity(), fileName) }
+                // Toast
+                Toast.makeText(context, "Localização salva.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnStart.setOnClickListener {
@@ -112,5 +118,4 @@ class TrackingFragment : Fragment() {
             }
         }
     }
-
 }
