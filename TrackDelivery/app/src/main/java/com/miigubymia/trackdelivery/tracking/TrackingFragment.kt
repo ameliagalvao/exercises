@@ -41,10 +41,6 @@ class TrackingFragment : Fragment() {
         btnRegister.setOnClickListener {
                 // Verifica se o serviço está rodando
                 if (isMyServiceRunning(LocationService::class.java, requireContext())){
-                    Intent(requireActivity().applicationContext, LocationService::class.java).apply {
-                        action = LocationService.ACTION_START
-                        requireActivity().startService(this)
-                    }
                     // Pega a data
                     val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
                     currentTime = simpleFormat.format(Date())
@@ -53,15 +49,17 @@ class TrackingFragment : Fragment() {
                         Service.MODE_PRIVATE
                     ).getString("CurrentLocation", "...")
                     // Salva o arquivo
-                    fileName = "$currentTime.txt"
-                    context?.let { it1 ->
-                        if (currentLocation != null) {
-                            write(it1, requireActivity(), fileName, currentLocation)
+                    if (currentLocation != "..."){
+                        fileName = "$currentTime.txt"
+                        context?.let { it1 ->
+                            if (currentLocation != null) {
+                                write(it1, requireActivity(), fileName, currentLocation)
+                            }
                         }
+                        // Toast
+                        Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
                     }
-                    // Toast
-                    Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
-                }
+                    }
             }
 
         btnStart.setOnClickListener {
