@@ -5,7 +5,6 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
 import com.miigubymia.trackdelivery.R
@@ -22,7 +21,6 @@ class LocationService:Service() {
 
     //Variavel para pegar as coordenadas
     var coordenates = ""
-
 
     // escopo vinculado ao nosso serviço
     // O supervisor garante que se um job nesse serviço falhar, os outros continuarão
@@ -55,7 +53,8 @@ class LocationService:Service() {
         // Verifica se o serviço está ativo e se a string não está vazia e coloca as
         // coordenadas na variavel coordenadas
         if (isMyServiceRunning(LocationService::class.java, this) && coordenates.isNotEmpty()){
-            Toast.makeText(this, coordenates, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, coordenates, Toast.LENGTH_SHORT).show()
+            application.getSharedPreferences("SaveLocation", MODE_PRIVATE).edit().putString("CurrentLocation", coordenates).commit()
         }
         return super.onStartCommand(intent, flags, startId)
     }
@@ -79,6 +78,7 @@ class LocationService:Service() {
             .onEach { location ->
                 val lat = location.latitude.toString()
                 val long = location.longitude.toString()
+                // passa os dados para a variavel
                 coordenates = "$lat, $long"
                 val updateNotification = notification.setContentText(
                     "Sua localização é: ($lat, $long)"
