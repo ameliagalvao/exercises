@@ -3,6 +3,7 @@ package com.miigubymia.trackdelivery.tracking
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -30,7 +31,6 @@ class TrackingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_tracking, container, false)
-
         val btnStart = view.findViewById<Button>(R.id.btnStartTrack)
         val btnStop = view.findViewById<Button>(R.id.btnStopTrack)
         val btnRegister = view.findViewById<Button>(R.id.btnRegister)
@@ -45,13 +45,14 @@ class TrackingFragment : Fragment() {
                 val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
                 currentTime = simpleFormat.format(Date())
                 //Localização
-                val currentLocation = ""
-
+                val currentLocation = requireActivity().application.getSharedPreferences("SaveLocation",
+                    Service.MODE_PRIVATE
+                ).getString("CurrentLocation", "teste")
                 // Salva o arquivo
                 fileName = "$currentTime.crd"
                 context?.let { it1 -> write(it1, requireActivity(), fileName) }
                 // Toast
-                Toast.makeText(context, "Localização salva.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
             }
         }
 
