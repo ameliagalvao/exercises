@@ -20,7 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.miigubymia.trackdelivery.R
 import java.io.File
-import java.io.FileOutputStream
+import java.io.FileWriter
 import java.util.*
 
 class TrackingFragment : Fragment() {
@@ -39,22 +39,30 @@ class TrackingFragment : Fragment() {
         val textViewLocation = view.findViewById<TextView>(R.id.tvLocation)
 
         btnRegister.setOnClickListener {
-            // Verifica se o serviço está rodando
-            if (isMyServiceRunning(LocationService::class.java, requireContext())){
-                // Pega a data
-                val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
-                currentTime = simpleFormat.format(Date())
-                //Localização
-                val currentLocation = requireActivity().application.getSharedPreferences("SaveLocation",
-                    Service.MODE_PRIVATE
-                ).getString("CurrentLocation", "teste")
-                // Salva o arquivo
-                fileName = "$currentTime.crd"
-                context?.let { it1 -> write(it1, requireActivity(), fileName) }
-                // Toast
-                Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
+                // Verifica se o serviço está rodando
+                if (isMyServiceRunning(LocationService::class.java, requireContext())){
+                    Intent(requireActivity().applicationContext, LocationService::class.java).apply {
+                        action = LocationService.ACTION_START
+                        requireActivity().startService(this)
+                    }
+                    // Pega a data
+                    val simpleFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+                    currentTime = simpleFormat.format(Date())
+                    //Localização pega no sharedPref
+                    val currentLocation = requireActivity().application.getSharedPreferences("SaveLocation",
+                        Service.MODE_PRIVATE
+                    ).getString("CurrentLocation", "...")
+                    // Salva o arquivo
+                    fileName = "$currentTime.txt"
+                    context?.let { it1 ->
+                        if (currentLocation != null) {
+                            write(it1, requireActivity(), fileName, currentLocation)
+                        }
+                    }
+                    // Toast
+                    Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
+                }
             }
-        }
 
         btnStart.setOnClickListener {
             if (!requireActivity().applicationContext.hasLocationPermission()) {
@@ -95,7 +103,7 @@ class TrackingFragment : Fragment() {
         return view
     }
 
-    fun write(context:Context, activity: Activity, fileName:String) {
+    fun write(context:Context, activity: Activity, fileName:String, content:String) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED
@@ -104,17 +112,15 @@ class TrackingFragment : Fragment() {
             ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE), 100)
         }else{
-            val bytesToWrite = ByteArray(100)
             val externalDir = activity.applicationContext.getExternalFilesDir(null)
             val file = File(externalDir, fileName)
             try {
-                if (!file.exists()){
+                if (!file.exists()) {
                     file.createNewFile()
                 }
-                val fos = FileOutputStream(file)
-                fos.write(bytesToWrite)
-                fos.close()
-            }catch (e:Exception){
+                val writer = FileWriter(file, true)
+                writer.use { it.write(content) }
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
