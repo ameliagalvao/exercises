@@ -5,6 +5,7 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
 import com.miigubymia.trackdelivery.R
@@ -50,13 +51,16 @@ class LocationService:Service() {
             ACTION_START -> start()
             ACTION_STOP -> stop()
         }
+        /*
         // Verifica se o serviço está ativo e se a string não está vazia e coloca as
         // coordenadas na variavel coordenadas
-        if (isMyServiceRunning(LocationService::class.java, this) && coordenates.isNotEmpty()){
-            //Toast.makeText(this, coordenates, Toast.LENGTH_SHORT).show()
-            // usa o shared preferences para armazenar a localização
-            application.getSharedPreferences("SaveLocation", MODE_PRIVATE).edit().putString("CurrentLocation", coordenates).commit()
+        if (coordenates.isNotEmpty()){
+            Toast.makeText(this, coordenates, Toast.LENGTH_SHORT).show()
+            // Com o shared preferences não dá, porque o valor fixa fixo ao começo não correspondendo a localização de
+            // quando clicado registrar. Ele precisa salvar quando clicar no registrar.
         }
+
+         */
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -79,8 +83,9 @@ class LocationService:Service() {
             .onEach { location ->
                 val lat = location.latitude.toString()
                 val long = location.longitude.toString()
-                // passa os dados para a variavel
+                // passa os dados para a variavel coordenates e depois ela é salva no shared
                 coordenates = "$lat, $long"
+                application.getSharedPreferences("SaveLocation", MODE_PRIVATE).edit().putString("CurrentLocation", coordenates).commit()
                 val updateNotification = notification.setContentText(
                     "Sua localização é: ($lat, $long)"
                 )
