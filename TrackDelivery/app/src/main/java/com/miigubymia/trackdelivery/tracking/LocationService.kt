@@ -54,6 +54,7 @@ class LocationService:Service() {
         // coordenadas na variavel coordenadas
         if (isMyServiceRunning(LocationService::class.java, this) && coordenates.isNotEmpty()){
             //Toast.makeText(this, coordenates, Toast.LENGTH_SHORT).show()
+            // usa o shared preferences para armazenar a localização
             application.getSharedPreferences("SaveLocation", MODE_PRIVATE).edit().putString("CurrentLocation", coordenates).commit()
         }
         return super.onStartCommand(intent, flags, startId)
