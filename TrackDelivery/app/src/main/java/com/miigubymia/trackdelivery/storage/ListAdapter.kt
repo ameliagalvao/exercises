@@ -10,14 +10,27 @@ import com.miigubymia.trackdelivery.R
 
 class ListAdapter(val registers: ArrayList<String> = arrayListOf<String>()): RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
-    class ListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    private lateinit var fileListener: onFileClickListener
+    interface onFileClickListener{
+        fun onFileClick(position:Int)
+    }
+    fun setOnFileClickListener(listener: onFileClickListener){
+        fileListener = listener
+    }
+
+    class ListViewHolder(itemView: View, listener: onFileClickListener):RecyclerView.ViewHolder(itemView){
         val tvFileName: TextView = itemView.findViewById(R.id.tvFileName)
+        init {
+            itemView.setOnClickListener {
+                listener.onFileClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view:View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_register_card,parent,false)
-        return ListViewHolder(view)
+        return ListViewHolder(view, fileListener)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
