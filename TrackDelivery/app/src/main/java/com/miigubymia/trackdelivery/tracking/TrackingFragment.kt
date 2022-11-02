@@ -19,11 +19,15 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.miigubymia.trackdelivery.R
+import com.miigubymia.trackdelivery.storage.ListViewModel
 import java.io.File
 import java.io.FileWriter
 import java.util.*
 
 class TrackingFragment : Fragment() {
+
+    val listViewModel = ListViewModel()
+    val registers : MutableList<String> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +54,7 @@ class TrackingFragment : Fragment() {
                     ).getString("CurrentLocation", "...")
                     // Salva o arquivo
                     if (currentLocation != "..."){
-                        fileName = "$currentTime.txt"
+                        fileName = "$currentTime.crd"
                         context?.let { it1 ->
                             if (currentLocation != null) {
                                 write(it1, requireActivity(), fileName, currentLocation)
@@ -58,6 +62,9 @@ class TrackingFragment : Fragment() {
                         }
                         // Toast
                         Toast.makeText(context, currentLocation, Toast.LENGTH_SHORT).show()
+                        // Tentativa lista
+                        listViewModel.addToList(fileName, registers)
+                        listViewModel.updateListInSharedPref(requireActivity(), registers)
                     }
                     }
             }
