@@ -1,7 +1,10 @@
 package com.miigubymia.trackdelivery.tracking
 
 import android.Manifest
+import android.app.ActivityManager
+import android.app.Service
 import android.content.Context
+import android.content.Context.ACTIVITY_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -12,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onEach
 
